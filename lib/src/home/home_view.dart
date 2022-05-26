@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:get/route_manager.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:lottie/lottie.dart';
 import 'package:mama_app_flutter/src/account/login/view/login_view.dart';
 import 'package:mama_app_flutter/src/core/user_account/auth_manager.dart';
 import 'package:mama_app_flutter/src/home/home_view_controller.dart';
@@ -15,8 +16,10 @@ class HomeView extends StatelessWidget {
   HomeView({Key? key}) : super(key: key);
 
   List<Widget> _googleNavBarWidgets = [
-    Text(
-      'Hosgeldin',
+    ListView(
+      children: [
+        Lottie.asset('assets/cute_dog.json'),
+      ],
     ),
     MamaMapView(),
     UserScoresView(),
