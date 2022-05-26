@@ -11,22 +11,27 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     LoginViewController _loginViewController = Get.put(LoginViewController());
+
     return Scaffold(
       body: SafeArea(child: loginForm()),
+      backgroundColor: Colors.white,
     );
   }
 
   Form loginForm() {
     LoginViewController _loginViewController = Get.find();
     return Form(
-      autovalidateMode: AutovalidateMode.onUserInteraction,
       key: _loginFormKey,
       child: ListView(
         padding: const EdgeInsets.all(16.0),
         // shrinkWrap: true,
         keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
         children: [
-          // Image.asset('assets/logo.png'),
+          Image.asset(
+            'assets/ic_login.png',
+            width: 256.0,
+            height: 256.0,
+          ),
           Text(
             "Giriş",
             style: TextStyle(fontSize: 24.0),
@@ -53,7 +58,7 @@ class LoginView extends StatelessWidget {
             controller: _loginViewController.emailCtrl,
             validator: (value) {
               return (value == null || value.isEmpty)
-                  ? 'E-mail adresinizi giriniz.'
+                  ? 'E-mail adresini giriniz.'
                   : null;
             },
           ),
@@ -66,12 +71,20 @@ class LoginView extends StatelessWidget {
                 Icons.lock,
                 size: 20,
               ),
+              suffix: InkWell(
+                  onTap: () {
+                    _loginViewController.obscureText.value ? false : true;
+                  },
+                  child: Icon(
+                    Icons.remove_red_eye_outlined,
+                    size: 20,
+                  )),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8),
               ),
               labelText: "Şifre",
             ),
-            obscureText: true,
+            obscureText: _loginViewController.obscureText.value,
             keyboardType: TextInputType.visiblePassword,
             controller: _loginViewController.passwordCtrl,
             validator: (value) {
@@ -83,6 +96,9 @@ class LoginView extends StatelessWidget {
           SizedBox(
             height: 8,
           ),
+          Container(
+              alignment: Alignment.centerRight,
+              child: InkWell(onTap: () {}, child: Text('Sifremi Unuttum'))),
           Obx(
             () => _loginViewController.loginButtonLoading.value
                 ? Center(
@@ -104,7 +120,6 @@ class LoginView extends StatelessWidget {
                       style: TextStyle(fontSize: 16),
                     )),
           ),
-
           TextButton(
             onPressed: () {
               Get.to(

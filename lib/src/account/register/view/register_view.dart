@@ -12,20 +12,26 @@ class RegisterView extends StatelessWidget {
   Widget build(BuildContext context) {
     RegisterViewController _registerViewController =
         Get.put(RegisterViewController());
-    return Scaffold(body: SafeArea(child: registerForm()));
+    return Scaffold(
+      body: SafeArea(child: registerForm()),
+      backgroundColor: Colors.white,
+    );
   }
 
   Form registerForm() {
     RegisterViewController _registerViewController = Get.find();
     return Form(
-      autovalidateMode: AutovalidateMode.onUserInteraction,
       key: _registerFormKey,
       child: ListView(
         padding: const EdgeInsets.all(16.0),
         // shrinkWrap: true,
         keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
         children: [
-          // Image.asset('assets/logo.png'),
+          Image.asset(
+            'assets/ic_user.png',
+            width: 128.0,
+            height: 128.0,
+          ),
           Text(
             "Kayıt",
             style: TextStyle(fontSize: 24.0),
@@ -93,7 +99,6 @@ class RegisterView extends StatelessWidget {
               ),
               labelText: "İsim",
             ),
-            obscureText: true,
             keyboardType: TextInputType.name,
             controller: _registerViewController.nameCtrl,
             validator: (value) {
@@ -116,7 +121,6 @@ class RegisterView extends StatelessWidget {
               ),
               labelText: "Telefon",
             ),
-            obscureText: true,
             keyboardType: TextInputType.phone,
             controller: _registerViewController.phoneCtrl,
             validator: (value) {
@@ -139,7 +143,6 @@ class RegisterView extends StatelessWidget {
               ),
               labelText: "Doğum Tarihi",
             ),
-            obscureText: true,
             keyboardType: TextInputType.datetime,
             controller: _registerViewController.birthday,
             validator: (value) {
@@ -151,6 +154,27 @@ class RegisterView extends StatelessWidget {
           SizedBox(
             height: 8,
           ),
+          Obx(() => CheckboxListTile(
+              title: Row(
+                children: [
+                  Text(
+                    'KVKK metnini ',
+                    style: TextStyle(fontSize: 14.0, color: Colors.red),
+                  ),
+                  Text(
+                    'okudum, onayliyorum',
+                    style: TextStyle(
+                      fontSize: 14.0,
+                    ),
+                  ),
+                ],
+              ),
+              value: _registerViewController.kvkk.value,
+              onChanged: (value) {
+                if (value != null) {
+                  _registerViewController.kvkk.value = value;
+                }
+              })),
           Obx(
             () => _registerViewController.registerButtonLoading.value
                 ? Center(
@@ -170,7 +194,6 @@ class RegisterView extends StatelessWidget {
                       style: TextStyle(fontSize: 16),
                     )),
           ),
-
           TextButton(
             onPressed: () {
               Get.to(

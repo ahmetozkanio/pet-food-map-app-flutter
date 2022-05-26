@@ -4,20 +4,21 @@ import 'package:get/route_manager.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:mama_app_flutter/src/account/login/view/login_view.dart';
+import 'package:mama_app_flutter/src/core/user_account/auth_manager.dart';
 import 'package:mama_app_flutter/src/home/home_view_controller.dart';
 
+import '../mama_map/view/mama_map_view.dart';
 import '../profile/view/profile_view.dart';
 import '../user_scores/view/user_scores_view.dart';
 
 class HomeView extends StatelessWidget {
   HomeView({Key? key}) : super(key: key);
+
   List<Widget> _googleNavBarWidgets = [
     Text(
-      'Text1',
+      'Hosgeldin',
     ),
-    Text(
-      'Text2',
-    ),
+    MamaMapView(),
     UserScoresView(),
     ProfileView()
   ];
@@ -43,7 +44,7 @@ class HomeView extends StatelessWidget {
               .elementAt(_homeViewController.gnavIndex.value),
         ),
       ),
-      drawer: Drawer(),
+      // drawer: Drawer(),
       bottomNavigationBar: Container(
         padding: EdgeInsets.all(12.0),
         child: googleNavbar(_homeViewController, context),
@@ -51,10 +52,8 @@ class HomeView extends StatelessWidget {
     );
   }
 
-  SingleChildScrollView googleNavbar(_controllerAdmin, BuildContext context) {
-    return SingleChildScrollView(
-      padding: EdgeInsets.only(left: 8.0, top: 16.0, right: 8.0),
-      scrollDirection: Axis.horizontal,
+  Container googleNavbar(_controllerAdmin, BuildContext context) {
+    return Container(
       child: GNav(
           selectedIndex: _controllerAdmin.gnavIndex.value,
           onTabChange: (index) {
@@ -87,19 +86,15 @@ class HomeView extends StatelessWidget {
           tabs: [
             GButton(
               icon: Icons.home,
-              text: 'Ana Sayfa',
             ),
             GButton(
               icon: Icons.pets,
-              text: 'Mama Haritasi',
             ),
             GButton(
               icon: Icons.show_chart_outlined,
-              text: 'Scorlar',
             ),
             GButton(
               icon: Icons.person,
-              text: 'Profil',
             ),
           ]),
     );

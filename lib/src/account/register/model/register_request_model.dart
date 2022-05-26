@@ -18,11 +18,11 @@ class RegisterRequestModel {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['email'] = this.email;
-    data['password'] = this.password;
-    data['name'] = this.name;
-    data['phone'] = this.phone;
-    data['birthday'] = this.birthday;
+    data['email'] = email;
+    data['password'] = password;
+    data['name'] = name;
+    data['phone'] = phone;
+    data['birthday'] = birthday;
     return data;
   }
 }

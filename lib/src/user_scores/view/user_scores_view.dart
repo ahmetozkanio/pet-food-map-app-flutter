@@ -27,7 +27,10 @@ class UserScoresView extends StatelessWidget {
             itemCount: _userScoresViewController.scoresList.length,
             itemBuilder: (context, index) {
               return GFListTile(
-                  avatar: CircleAvatar(),
+                  avatar: Icon(
+                    Icons.person,
+                    size: 48.0,
+                  ),
                   titleText: _userScoresViewController.scoresList[index].name,
                   subTitleText: 'Skor : ' +
                       _userScoresViewController.scoresList[index].score

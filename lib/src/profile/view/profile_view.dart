@@ -13,25 +13,34 @@ class ProfileView extends StatelessWidget {
     AuthenticationManager authenticationManager = Get.find();
     return ListView(
       children: [
-        CircleAvatar(),
+        Container(
+            width: 48,
+            height: 48,
+            child: Image.network(profileViewController.photo)),
         ListTile(
           leading: Icon(Icons.person),
           title: Text(profileViewController.name),
           tileColor: Color.fromARGB(255, 248, 248, 248),
         ),
         ListTile(
+          leading: Icon(Icons.mail),
           title: Text(profileViewController.email),
           tileColor: Color.fromARGB(255, 248, 248, 248),
         ),
         ListTile(
+          leading: Icon(Icons.phone),
           title: Text(profileViewController.phone),
           tileColor: Color.fromARGB(255, 248, 248, 248),
         ),
         ListTile(
+          leading: Icon(Icons.date_range),
           title: Text(profileViewController.birthDay),
           tileColor: Color.fromARGB(255, 248, 248, 248),
         ),
         OutlinedButton(
+            style: OutlinedButton.styleFrom(
+              primary: Colors.red,
+            ),
             onPressed: () {
               showDialog<String>(
                 context: context,

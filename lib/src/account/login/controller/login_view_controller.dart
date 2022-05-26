@@ -12,6 +12,8 @@ class LoginViewController extends GetxController {
   AuthenticationManager _authenticationManager = Get.find();
   RxBool loginButtonLoading = false.obs; //giris butonu circle kontrol islemi.
 
+  RxBool obscureText = true.obs;
+
   TextEditingController emailCtrl =
       TextEditingController(); // LoginView EmailText
   TextEditingController passwordCtrl =
@@ -25,17 +27,17 @@ class LoginViewController extends GetxController {
 
     if (_response != null) {
       _authenticationManager.login(
-        _response.data?.accessToken,
-        _response.data?.email,
-        _response.data?.id,
-        _response.data?.name,
-        _response.data?.roleId,
-        _response.data?.score,
-        _response.data?.birthday,
-        _response.data?.profilePhoto,
-        _response.data?.phone,
-        _response.data?.tokenType,
-        _response.data?.expiresAt,
+        _response.data?.accessToken.toString(),
+        _response.data?.email.toString(),
+        _response.data?.id.toString(),
+        _response.data?.name.toString(),
+        _response.data?.roleId.toString(),
+        _response.data?.score.toString(),
+        _response.data?.birthday.toString(),
+        _response.data?.profilePhoto.toString(),
+        _response.data?.phone.toString(),
+        _response.data?.tokenType.toString(),
+        _response.data?.expiresAt.toString(),
       );
       loginButtonLoading.value = false;
 

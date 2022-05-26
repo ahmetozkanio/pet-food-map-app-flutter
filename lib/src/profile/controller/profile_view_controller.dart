@@ -8,6 +8,7 @@ class ProfileViewController extends GetxController {
   String email = '';
   String birthDay = '';
   String phone = '';
+  String photo = '';
 
   @override
   void onInit() {
@@ -21,5 +22,6 @@ class ProfileViewController extends GetxController {
     email = authenticationManager.getEmail().toString();
     birthDay = authenticationManager.getBirthDay().toString();
     phone = authenticationManager.getPhone().toString();
+    photo = authenticationManager.getProfilePhoto().toString();
   }
 }

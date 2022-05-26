@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mama_app_flutter/src/account/login/view/login_view.dart';
+import 'package:mama_app_flutter/src/core/user_account/auth_manager.dart';
 import 'package:mama_app_flutter/src/home/home_view.dart';
 
 import '../../../widgets/snackbars.dart';
@@ -11,6 +13,8 @@ import '../model/register_response_model.dart';
 import '../service/register_service.dart';
 
 class RegisterViewController extends GetxController {
+  AuthenticationManager authenticationManager = Get.find();
+
   RxBool registerButtonLoading =
       false.obs; //Kayit butonu circle kontrol islemi.
 
@@ -19,6 +23,8 @@ class RegisterViewController extends GetxController {
   TextEditingController nameCtrl = TextEditingController();
   TextEditingController phoneCtrl = TextEditingController();
   TextEditingController birthday = TextEditingController();
+
+  RxBool kvkk = false.obs;
 
   registerUser() async {
     registerButtonLoading.value = true;
@@ -42,8 +48,8 @@ class RegisterViewController extends GetxController {
         registerButtonLoading.value = false;
 
         successSnackbar(
-            registerResponseModel.message.toString(), 'Hoşgeldiniz.');
-        Get.to(() => HomeView());
+            registerResponseModel.message.toString(), 'Lutfen giris yapiniz.');
+        Get.to(() => LoginView());
       } else {
         registerButtonLoading.value = false;
         errorSnackbar(

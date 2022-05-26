@@ -4,30 +4,39 @@ mixin AuthCacheManager {
   var authBox = GetStorage();
 
   Future<bool> saveLoginInfo(
-    var token,
-    var email,
-    var name,
-    var id,
-    var role,
-    var score,
-    var birthDay,
-    var profilePhoto,
-    var phone,
-    var tokenType,
-    var expiresAt,
+    token,
+    email,
+    id,
+    name,
+    role,
+    score,
+    birthDay,
+    profilePhoto,
+    phone,
+    tokenType,
+    expiresAt,
   ) async {
     try {
-      await authBox.write(LoginCacheManagerKey.token.toString(), token);
-      await authBox.write(LoginCacheManagerKey.email.toString(), email);
-      await authBox.write(LoginCacheManagerKey.name.toString(), name);
-      await authBox.write(LoginCacheManagerKey.userId.toString(), id);
-      await authBox.write(LoginCacheManagerKey.role.toString(), role);
-      await authBox.write(LoginCacheManagerKey.birthDay.toString(), birthDay);
       await authBox.write(
-          LoginCacheManagerKey.profilePhoto.toString(), profilePhoto);
-      await authBox.write(LoginCacheManagerKey.phone.toString(), phone);
-      await authBox.write(LoginCacheManagerKey.tokenType.toString(), tokenType);
-      await authBox.write(LoginCacheManagerKey.expiresAt.toString(), expiresAt);
+          LoginCacheManagerKey.token.toString(), token.toString());
+      await authBox.write(
+          LoginCacheManagerKey.email.toString(), email.toString());
+      await authBox.write(
+          LoginCacheManagerKey.name.toString(), name.toString());
+      await authBox.write(
+          LoginCacheManagerKey.userId.toString(), id.toString());
+      await authBox.write(
+          LoginCacheManagerKey.role.toString(), role.toString());
+      await authBox.write(
+          LoginCacheManagerKey.birthDay.toString(), birthDay.toString());
+      await authBox.write(LoginCacheManagerKey.profilePhoto.toString(),
+          profilePhoto.toString());
+      await authBox.write(
+          LoginCacheManagerKey.phone.toString(), phone.toString());
+      await authBox.write(
+          LoginCacheManagerKey.tokenType.toString(), tokenType.toString());
+      await authBox.write(
+          LoginCacheManagerKey.expiresAt.toString(), expiresAt.toString());
     } catch (e) {
       print('$e -------- Login User cache isleminde problem olustu.');
       return false;
