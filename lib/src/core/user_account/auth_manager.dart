@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../home/splash_view/splash_view.dart';
+import '../../profile/controller/profile_view_controller.dart';
 import '../../widgets/snackbars.dart';
 import 'auth_cache_manager.dart';
 
@@ -13,6 +14,7 @@ class AuthenticationManager extends GetxController with AuthCacheManager {
       isLogged.value = false;
       removeUserCacheInfo();
       Get.clearRouteTree();
+      Get.delete<ProfileViewController>();
       Get.offAll(() => SplashView());
       successSnackbar("Çıkış yapıldı.", 'Tekrar giris yapiniz.');
     } catch (e) {

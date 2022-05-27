@@ -65,34 +65,39 @@ class LoginView extends StatelessWidget {
           SizedBox(
             height: 8,
           ),
-          TextFormField(
-            decoration: InputDecoration(
-              prefixIcon: Icon(
-                Icons.lock,
-                size: 20,
-              ),
-              suffix: InkWell(
-                  onTap: () {
-                    _loginViewController.obscureText.value ? false : true;
-                  },
-                  child: Icon(
-                    Icons.remove_red_eye_outlined,
+          Obx(() => TextFormField(
+                decoration: InputDecoration(
+                  prefixIcon: Icon(
+                    Icons.lock,
                     size: 20,
-                  )),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
-              labelText: "Şifre",
-            ),
-            obscureText: _loginViewController.obscureText.value,
-            keyboardType: TextInputType.visiblePassword,
-            controller: _loginViewController.passwordCtrl,
-            validator: (value) {
-              return (value == null || value.isEmpty)
-                  ? 'Lütfen şifrenizi giriniz.'
-                  : null;
-            },
-          ),
+                  ),
+                  suffix: InkWell(
+                      onTap: () {
+                        _loginViewController.obscureText.value
+                            ? _loginViewController.obscureText.value = false
+                            : _loginViewController.obscureText.value = true;
+                      },
+                      child: Icon(
+                        _loginViewController.obscureText.value
+                            ? Icons.visibility
+                            : Icons.visibility_off,
+                        color: Colors.blue,
+                        size: 20,
+                      )),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  labelText: "Şifre",
+                ),
+                obscureText: _loginViewController.obscureText.value,
+                keyboardType: TextInputType.visiblePassword,
+                controller: _loginViewController.passwordCtrl,
+                validator: (value) {
+                  return (value == null || value.isEmpty)
+                      ? 'Lütfen şifrenizi giriniz.'
+                      : null;
+                },
+              )),
           SizedBox(
             height: 8,
           ),
