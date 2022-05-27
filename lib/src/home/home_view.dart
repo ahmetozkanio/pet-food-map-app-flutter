@@ -21,9 +21,9 @@ class HomeView extends StatelessWidget {
         Lottie.asset('assets/cute_dog.json'),
       ],
     ),
-    MamaMapView(),
-    UserScoresView(),
-    ProfileView()
+    const MamaMapView(),
+    const UserScoresView(),
+    const ProfileView()
   ];
   @override
   Widget build(BuildContext context) {
@@ -42,14 +42,14 @@ class HomeView extends StatelessWidget {
       ),
       body: Obx(
         () => Container(
-          padding: EdgeInsets.all(12.0),
+          padding: const EdgeInsets.all(12.0),
           child: _googleNavBarWidgets
               .elementAt(_homeViewController.gnavIndex.value),
         ),
       ),
       // drawer: Drawer(),
       bottomNavigationBar: Container(
-        padding: EdgeInsets.all(12.0),
+        padding: const EdgeInsets.all(12.0),
         child: googleNavbar(_homeViewController, context),
       ),
     );
@@ -77,7 +77,7 @@ class HomeView extends StatelessWidget {
           //   BoxShadow(color: Colors.grey.withOpacity(0.5), blurRadius: 8)
           // ], // tab button shadow
           curve: Curves.easeOutExpo, // tab animation curves
-          duration: Duration(milliseconds: 200), // tab animation duration
+          duration: const Duration(milliseconds: 200), // tab animation duration
           gap: 8, // the tab button gap between icon and text
           color: Colors.grey[400], // unselected icon color
           activeColor:
@@ -85,18 +85,18 @@ class HomeView extends StatelessWidget {
           iconSize: 24, // tab button icon size
           // tabBackgroundColor: Colors.purple
           //     .withOpacity(0.1), // selected tab background color
-          padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 6.0),
+          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 6.0),
           tabs: [
-            GButton(
+            const GButton(
               icon: Icons.home,
             ),
-            GButton(
+            const GButton(
               icon: Icons.pets,
             ),
-            GButton(
+            const GButton(
               icon: Icons.show_chart_outlined,
             ),
-            GButton(
+            const GButton(
               icon: Icons.person,
             ),
           ]),

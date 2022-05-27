@@ -30,6 +30,7 @@ class UserScoresView extends StatelessWidget {
                   avatar: Icon(
                     Icons.person,
                     size: 48.0,
+                    color: Colors.blue,
                   ),
                   titleText: _userScoresViewController.scoresList[index].name,
                   subTitleText: 'Skor : ' +
