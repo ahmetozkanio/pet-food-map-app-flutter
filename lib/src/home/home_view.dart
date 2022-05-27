@@ -17,9 +17,7 @@ class HomeView extends StatelessWidget {
 
   List<Widget> _googleNavBarWidgets = [
     ListView(
-      children: [
-        Lottie.asset('assets/cute_dog.json'),
-      ],
+      children: [Lottie.asset('assets/cute_dog.json'), Text('Ahmet Ozkan')],
     ),
     const MamaMapView(),
     const UserScoresView(),
@@ -62,10 +60,6 @@ class HomeView extends StatelessWidget {
           onTabChange: (index) {
             _controllerAdmin.gnavIndex.value = index;
           },
-          // rippleColor: Color.fromARGB(
-          //     255, 66, 66, 66), // tab button ripple color when pressed
-          // hoverColor:
-          //     Color.fromARGB(255, 97, 97, 97), // tab button hover color
           haptic: true, // haptic feedback
           tabBorderRadius: 15,
           tabActiveBorder: Border.all(
