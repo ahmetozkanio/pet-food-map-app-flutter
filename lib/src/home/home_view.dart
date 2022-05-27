@@ -17,7 +17,10 @@ class HomeView extends StatelessWidget {
 
   List<Widget> _googleNavBarWidgets = [
     ListView(
-      children: [Lottie.asset('assets/cute_dog.json'), Text('Ahmet Ozkan')],
+      children: [
+        Lottie.asset('assets/cute_dog.json'),
+        const Text('Ahmet Ozkan', textAlign: TextAlign.center)
+      ],
     ),
     const MamaMapView(),
     const UserScoresView(),
