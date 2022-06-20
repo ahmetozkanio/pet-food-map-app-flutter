@@ -3,7 +3,7 @@
 ## Screenshots
 
 <p align='center'>
-    <img src="assets/screenshots/login.png" width="19%" />
+    <img src="assets/screenshots/login.PNG" width="19%" />
     <img src="assets/screenshots/register.png" width="19%" />
     <img src="assets/screenshots/home.png" width="19%" />
     <img src="assets/screenshots/map.png" width="19%" />
